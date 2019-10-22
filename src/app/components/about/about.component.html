@@ -1,0 +1,54 @@
+<h2>About</h2>
+
+<!-- later used for else part -->
+<ng-template #oddNumber>
+    <p> Your's is Odd number </p>
+</ng-template>
+
+
+<!--
+    # - template variable reference, scoped to only this component
+    *ngIf..else - ng 4 onwards
+    *ngSwitch
+
+-->
+
+<!-- countryCode is dom element of input tag-->
+<input  #countryCode >
+
+<p #para1 >
+    Para 1
+</p>
+ 
+
+<button (click)="para1.textContent = countryCode.value;">
+    Set Value
+</button>
+
+
+<p *ngIf="counter % 2 == 0 else oddNumber">
+    Even Number
+</p>
+
+
+<div [ngSwitch]="country">
+    <div *ngSwitchCase="'IN'">
+        From India
+    </div>
+    
+    <div *ngSwitchCase="'USA'">
+            From USA
+    </div>
+
+    <div *ngSwitchDefault>
+            From Unknown
+    </div>
+        
+</div>
+
+<button (click)="setCountry('USA')">USA</button>
+<button (click)="setCountry('IN')">IN</button>
+<button (click)="setCountry('UK')">UK</button>
+
+<app-counter [(counter)]="counter">
+</app-counter>

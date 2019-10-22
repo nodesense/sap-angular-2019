@@ -1,0 +1,40 @@
+<h2>Contact</h2>
+
+<!--
+
+     () - event binding
+     [] - property binding
+     
+     [()] - two way binding
+
+     ngModel is a directive from forms module
+
+-->
+
+<p>Your name {{name}}</p>
+<p>State code {{state}}</p>
+
+<span> Name </span>
+
+<input [(ngModel)]="name" >
+
+<!-- in expanded example -->
+
+<input [ngModel]="name" 
+       (ngModelChange)="name = $event"
+>
+
+
+<select [(ngModel)]="state" >
+
+    <option *ngFor="let state of states"
+            [value]="state.code"
+    >
+        {{state.name}}
+    </option>
+
+</select>
+
+<button (click)="show()">
+    Show
+</button>

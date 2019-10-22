@@ -1,0 +1,20 @@
+<h2>Home</h2>
+
+<p>Home Counter {{homeCounter}}</p>
+
+<!--
+    [()] - two way binding
+
+     (counterChange)="homeCounter = $event"
+-->
+
+<app-counter *ngIf="show" 
+            [(counter)]="homeCounter" 
+           
+            (resetEvent)="resetHandler($event)"
+            
+            >
+</app-counter>
+
+<hr />
+<button (click)="show = !show">Show/Hide</button>
