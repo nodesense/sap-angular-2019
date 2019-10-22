@@ -1,5 +1,13 @@
 <h2>Home</h2>
 
+<p> Price {{price}}</p>
+<p>Price number {{price | number:".4"}}</p>
+<p>Price {{price | currency:'INR'}}</p>
+<p>Date {{today}}</p> 
+<p> Title {{title | uppercase}}</p>
+<p>Date {{today | date}}</p> 
+<p>Date {{today | date: 'fullDate' | uppercase }}</p> 
+<p>Date {{today | date: 'MMM-dd-yyyy'}}</p> 
 <p>Home Counter {{homeCounter}}</p>
 
 <!--
@@ -10,6 +18,7 @@
 
 <app-counter *ngIf="show" 
             [(counter)]="homeCounter" 
+            title = "My Counter"
            
             (resetEvent)="resetHandler($event)"
             

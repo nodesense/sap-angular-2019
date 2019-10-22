@@ -9,6 +9,12 @@ export class HomeComponent implements OnInit {
   show = true;
 
   homeCounter = 1000;
+
+  price = 56999976.543432;
+  today = new Date();
+  title = "Home";
+  address = { city: 'Bangalore', state: 'Karnataka'};
+
   
   constructor() { }
 

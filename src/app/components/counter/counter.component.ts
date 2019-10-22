@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, 
-         Output, EventEmitter
+         Output, EventEmitter,
+         OnChanges,
+         SimpleChanges
 } from '@angular/core';
 
 @Component({
@@ -7,7 +9,7 @@ import { Component, OnInit, Input,
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent implements OnInit, OnChanges {
 
   // Input, used for property binding []
 
@@ -16,6 +18,10 @@ export class CounterComponent implements OnInit {
   @Input()
   counter = 0; // type inference, assume type from assignment
 
+
+  @Input()
+  title: string;
+  
   // output variable is input name + "Change" for two way binding [()]
 
   @Output()
@@ -85,4 +91,10 @@ export class CounterComponent implements OnInit {
      this.resetEvent.emit("resetCounter");
   }
 
+
+  // called on initialization time
+  // whenever parent property to child got changed
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes are ', changes);
+  }
 }
