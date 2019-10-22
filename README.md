@@ -1,3 +1,14 @@
+# Get Started
+
+> git clone https://github.com/nodesense/sap-angular-2019
+
+> cd sap-angular-2019
+
+> npm install
+
+> ng serve
+
+
 # ProductApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
