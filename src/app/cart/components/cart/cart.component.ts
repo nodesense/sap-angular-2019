@@ -1,22 +1,26 @@
+import { CartService } from './../../services/cart.service';
 import { CartItem } from './../../models/cart-item';
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  // providers: [
+  //   CartService
+  // ]
 })
 export class CartComponent implements OnInit {
 
   // dependency injection
   // angular inspect constructor before creating instance
 
-  items: CartItem[];
+  items$: Observable<CartItem[]>;
 
   constructor(private cartService: CartService) {
     console.log('CartComponent created');
-    this.items = this.cartService.items;
+    this.items$ = this.cartService.items$;
    }
 
   ngOnInit() {

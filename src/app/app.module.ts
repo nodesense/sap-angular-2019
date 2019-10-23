@@ -1,4 +1,4 @@
-import { CartModule } from './cart/cart.module';
+// import { CartModule } from './cart/cart.module'; // for code split
 import { SharedModule } from './shared/shared.module';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -10,8 +10,48 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import {FormsModule} from '@angular/forms';
+
+import {HttpClientModule} from '@angular/common/http';
+
+// simple route
+import {Route, Routes, RouterModule} from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+const routes: Routes = [
+    {
+        path: '', // default localhost:4200
+        component: HomeComponent
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    },
+
+    // lazy loading 
+    {
+        path: 'cart',
+        loadChildren: './cart/cart.module#CartModule'
+    },
+
+    {
+        path: 'products',
+        loadChildren: './product/product-routing.module#ProductRoutingModule'
+    },
+
+
+    // end of routes
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
+];
+
+
 
 @NgModule({
     imports: [
@@ -19,7 +59,9 @@ import {FormsModule} from '@angular/forms';
         BrowserModule, // Compiler, CommonModule
         FormsModule,
         SharedModule,
-        CartModule
+    //    CartModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule
         // CartModule
         // SharedModule
     ],
@@ -33,6 +75,7 @@ import {FormsModule} from '@angular/forms';
         CounterComponent,
         HeaderComponent,
         FooterComponent,
+        NotFoundComponent,
         // HomeComponent
         // FooterComponent
     ],

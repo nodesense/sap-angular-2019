@@ -21,7 +21,7 @@ export class CartService {
 
   amount$: BehaviorSubject<number> = new BehaviorSubject(this._amount);
   count$: BehaviorSubject<number> = new BehaviorSubject(this._totalItems);
-  items$: Subject<CartItem[]> = new Subject();
+  items$: BehaviorSubject<CartItem[]> = new BehaviorSubject(this.cartItems);
 
   constructor() {
      console.log('Cart Service Created');
@@ -66,11 +66,14 @@ export class CartService {
      this.count = count;
 
      console.log("amount, count", this.amount, this.count)
+
+     this.items$.next(this.cartItems); // publish cart items
   }
 
   addItem(item: CartItem) {
     this.cartItems.push(item);
     this.calculate();
+
   }
 
   removeItem(id: number){
@@ -92,8 +95,8 @@ export class CartService {
   }
 
   emptyCart() {
-    this.cartItems.splice(0, this.cartItems.length);
-    // this.cartItems = [];
+    // this.cartItems.splice(0, this.cartItems.length);
+    this.cartItems = []; // assign new obj
     this.calculate();
   }
 
