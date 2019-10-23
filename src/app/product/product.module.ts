@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,8 @@ import { ProductSearchComponent } from './components/product-search/product-sear
      RouterModule,
 
      FormsModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     SharedModule
   ]
 })
 export class ProductModule { }

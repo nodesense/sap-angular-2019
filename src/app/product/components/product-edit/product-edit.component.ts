@@ -38,6 +38,11 @@ export class ProductEditComponent implements OnInit {
   }
 
   save() {
+    this.productService.saveProduct(this.product)
+                       .subscribe( savedProduct => {
+                          console.log('product saved', savedProduct);
+                          this.router.navigateByUrl("/products");
+                       });
   }
 
 }

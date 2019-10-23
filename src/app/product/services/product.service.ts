@@ -30,5 +30,13 @@ export class ProductService {
   }
 
 
+  saveProduct(product: Product): Observable<any> {
+    if (product.id) { //updating existing product using put method
+      return this.http.put(`${environment.apiEndPoint}/api/products/${product.id}`, product);
+    } else  { // new product, insert, using post 
+      return this.http.post(`${environment.apiEndPoint}/api/products`, product);
+    }
+  }
+
 
 }

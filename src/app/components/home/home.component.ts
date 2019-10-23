@@ -27,4 +27,9 @@ export class HomeComponent implements OnInit {
     this.homeCounter = 1000;
   }
 
+
+  highlightStatus(status: boolean) {
+    console.log('directive event ', status);
+  }
+
 }

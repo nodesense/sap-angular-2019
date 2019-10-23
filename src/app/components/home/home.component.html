@@ -1,4 +1,9 @@
-<h2>Home</h2>
+<h2 appHighlight backgroundColor="yellow"  (highlightEvent)="highlightStatus($event)" >Home</h2>
+
+
+<!-- custom pipe -->
+<p  appHighlight backgroundColor="pink"> Counter ^ 2 = {{homeCounter | power:2}}</p>
+<p> Counter ^ 1 = {{homeCounter | power}} </p>
 
 <p> Price {{price}}</p>
 <p>Price number {{price | number:".4"}}</p>
@@ -21,6 +26,8 @@
             title = "My Counter"
            
             (resetEvent)="resetHandler($event)"
+
+            appHighlight
             
             >
 </app-counter>

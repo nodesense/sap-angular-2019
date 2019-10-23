@@ -14,6 +14,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   products$: Observable<Product[]>;
 
+  price: number;
+
 
   // products: Product[];
   subscription: Subscription;
