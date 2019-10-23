@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,10 @@ import { ProductSearchComponent } from './components/product-search/product-sear
     ],
   imports: [
     CommonModule,
-     RouterModule
+     RouterModule,
+
+     FormsModule,
+     ReactiveFormsModule
   ]
 })
 export class ProductModule { }

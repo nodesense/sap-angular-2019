@@ -1,1 +1,40 @@
-<p>product-edit works!</p>
+<h2>Product Edit - {{product.name}}</h2>
+
+<!--
+    pname refers to dom element
+    #productName="ngModel", productName refer to ngModel instance
+-->
+
+<p *ngIf="productForm.invalid"> Invalid form data</p>
+
+<form (ngSubmit)="save()"  #productForm="ngForm" >
+    Name
+    <input name="name" 
+           [(ngModel)]="product.name" 
+           
+           required
+           minlength="3"
+
+           #pname
+           #productName="ngModel"
+           
+           >
+
+    <p *ngIf="productName.invalid"> Incorrect name </p>
+
+    Price
+    <input name="price" type="number"
+           [(ngModel)]="product.price" >
+           
+    Brand
+    <select name="brandId" 
+            [(ngModel)]="product.brandId">
+        
+        <option *ngFor="let brand of (brands$ | async)" 
+                [value]="brand.id">
+            {{brand.name}}    
+        </option>
+    </select>
+
+    <button type="submit" [disabled]="productForm.invalid"   >Save</button>
+</form> 
